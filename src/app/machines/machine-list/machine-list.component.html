@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table" *ngIf="machines.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">Machine ID</th>
+            <th scope="col">Machine Name</th>
+            <th scope="col">Machine Type</th>
+            <th scope="col">Signal Type</th>
+            <th scope="col">Analog signal</th>
+            <th scope="col">Modbus</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let machine of machines">
+          <tr>
+            <td scope="row">{{ machine.id }}</td>
+            <td>{{ machine.name }}</td>
+            <td>{{ machine.type }}</td>
+            <td>{{ machine.signal }}</td>
+            <td>{{ machine.angSignal }}</td>
+            <td>{{ machine.modbus }}</td>
+            <td>
+              <span>
+                <!-- <fa-icon></fa-icon> -->
+                <!-- <fa-icon></fa-icon> -->
+                <!-- <a class="btn btn-primary" [routerLink]="['/edit', machine.id]"
+                  >Edit</a
+                >
+                <button
+                  class="btn btn-danger"
+                  type="button"
+                  (click)="onDelete(machine.id)"
+                >
+                  Delete
+                </button> -->
+
+                <fa-icon
+                  [icon]="faPen"
+                  style="color: green; cursor: pointer"
+                  [routerLink]="['/edit', machine.id]"
+                  *ngIf="userIsAuthenticated"
+                ></fa-icon>
+                <fa-icon
+                  [icon]="faPen"
+                  style="color: green; opacity: 0.5; cursor: not-allowed"
+                  [routerLink]="['/edit', machine.id]"
+                  *ngIf="!userIsAuthenticated"
+                ></fa-icon>
+                <!-- <fa-icon
+                  [icon]="faPen"
+                  style="color: green; cursor: pointer"
+                  [routerLink]="['/edit', machine.id]"
+                ></fa-icon> -->
+
+                &nbsp;
+                <fa-icon
+                  [icon]="faTrash"
+                  style="color: red; cursor: pointer"
+                  (click)="onDelete(machine.id)"
+                  *ngIf="userIsAuthenticated"
+                ></fa-icon>
+                <fa-icon
+                  [icon]="faTrash"
+                  style="color: red; opacity: 0.5; cursor: not-allowed"
+                  (click)="onDelete(machine.id)"
+                  *ngIf="!userIsAuthenticated"
+                ></fa-icon>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<h4 *ngIf="machines.length <= 0">No machines added yet!</h4>

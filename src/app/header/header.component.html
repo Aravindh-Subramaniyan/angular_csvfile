@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light bg-light p-md-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Machine</a>
+    <div class="">
+      <a
+        class="btn btn-outline-primary"
+        routerLink="/create"
+        *ngIf="userIsAuthenticated"
+        >Add Machine</a
+      >
+      &nbsp;
+      <a
+        class="btn btn-primary"
+        routerLink="/login"
+        *ngIf="!userIsAuthenticated"
+        >Login</a
+      >
+      &nbsp;
+      <a
+        class="btn btn-primary"
+        routerLink="/signup"
+        *ngIf="!userIsAuthenticated"
+        >Signup</a
+      >
+      <button
+        class="btn btn-primary"
+        *ngIf="userIsAuthenticated"
+        (click)="onLogout()"
+      >
+        Logout
+      </button>
+      <input
+        type="file"
+        #fileImportInput
+        name="File Upload"
+        id="csvFileUpload"
+        (change)="fileChangeListener($event)"
+        accept=".csv"
+      />
+      <!-- {{ newResult | json }} -->
+      {{ menu | json }}
+    </div>
+  </div>
+</nav>

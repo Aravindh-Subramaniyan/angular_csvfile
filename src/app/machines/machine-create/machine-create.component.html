@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div
+      class="
+        col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2
+        justify-content-center
+      "
+    >
+      <form (submit)="onSaveMachine(f)" #f="ngForm">
+        <div class="form-group">
+          <label>Machine Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            [ngModel]="machine?.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label>Machine Type</label>
+          <input
+            type="text"
+            id="type"
+            class="form-control"
+            [ngModel]="machine?.type"
+            name="type"
+          />
+        </div>
+        <div class="form-group">
+          <label>Signal Type</label>
+          <input
+            type="text"
+            id="signal"
+            class="form-control"
+            [ngModel]="machine?.signal"
+            name="signal"
+          />
+        </div>
+        <div class="form-group">
+          <label>Analog Signal</label>
+          <input
+            type="text"
+            id="angSignal"
+            class="form-control"
+            [ngModel]="machine?.angSignal"
+            name="angSignal"
+          />
+        </div>
+        <div class="form-group">
+          <label>Modbus</label>
+          <input
+            type="number"
+            id="modbus"
+            class="form-control"
+            [ngModel]="machine?.modbus"
+            name="modbus"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
