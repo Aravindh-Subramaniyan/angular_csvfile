@@ -5,6 +5,7 @@ const csvSchema = new mongoose.Schema({
   Name: String,
   Mark: Number,
   Age: Number,
+  id: Number,
 });
 
 module.exports = mongoose.model("CSV", csvSchema);
